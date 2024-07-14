@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Table(name = "topico")
@@ -20,11 +22,19 @@ public class Topico {
     private Long id;
     private String titulo;
     private String mensaje;
-    private Date fechaCreacion;
+    private LocalDateTime fechaCreacion;
 
     private boolean status;
     private String autor;
     private String curso;
 
-//public Topico
+    public Topico(DatosRegistroTopico datosRegistroTopico) {
+        this.titulo= datosRegistroTopico.titulo();
+        this.mensaje= datosRegistroTopico.mensaje();
+        this.fechaCreacion= LocalDateTime.now();
+        this.status=false;
+        this.autor= datosRegistroTopico.autor();
+        this.curso= datosRegistroTopico.curso();
+    }
+
 }

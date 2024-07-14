@@ -10,8 +10,9 @@ public class ServiceTopico {
     public DatosRespuestaTopico registrarTopico(DatosRegistroTopico datosRegistroTopico){
         //validar
         //crear
+        Topico topico=topicoRepository.save(new Topico(datosRegistroTopico));
         //devolver
-        return null;
+        return new DatosRespuestaTopico(topico.getId(),topico.getTitulo(),topico.getMensaje(),topico.getFechaCreacion(), topico.isStatus(), topico.getAutor(),topico.getCurso());
     }
 
     public void validarSiExiste(){
