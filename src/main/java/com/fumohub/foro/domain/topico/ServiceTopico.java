@@ -2,6 +2,8 @@ package com.fumohub.foro.domain.topico;
 
 import com.fumohub.foro.infra.errors.ValidacionDeIntegridad;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,6 +24,10 @@ public class ServiceTopico {
         validarSiExiste(id);
         Topico topico= topicoRepository.getReferenceById(id);
         return new DatosRespuestaTopico(topico);
+    }
+    public Page <DatosRespuestaTopico> listarTopicosSinResolver(Pageable page){
+        var listaTopicos=topicoRepository.findByStatusFalse(page);
+        return listaTopicos.map(d->new DatosRespuestaTopico(d));
     }
     //Update
     public DatosRespuestaTopico actualizarTopico(Long id, DatosRegistroTopico datosRegistroTopico){
