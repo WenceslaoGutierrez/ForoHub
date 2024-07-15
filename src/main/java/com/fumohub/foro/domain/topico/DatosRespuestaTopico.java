@@ -14,4 +14,7 @@ public record DatosRespuestaTopico(
         String autor,
         String curso
         ) {
+    public DatosRespuestaTopico(Topico topico) {
+        this(topico.getId(), topico.getTitulo(),topico.getMensaje(),topico.getFechaCreacion(), topico.isStatus(), topico.getAutor(), topico.getCurso());
+    }
 }

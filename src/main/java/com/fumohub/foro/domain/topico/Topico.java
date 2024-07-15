@@ -37,4 +37,11 @@ public class Topico {
         this.curso= datosRegistroTopico.curso();
     }
 
+    public void actualizarDatos(DatosRegistroTopico datosRegistroTopico) {
+        this.titulo= datosRegistroTopico.titulo();
+        this.mensaje= datosRegistroTopico.mensaje();
+        this.fechaCreacion= LocalDateTime.now();
+        this.autor= datosRegistroTopico.autor();
+        this.curso= datosRegistroTopico.curso();
+    }
 }
